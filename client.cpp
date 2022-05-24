@@ -1,3 +1,4 @@
+// g++ -pthread client.cpp RobustIO.cpp -o client && g++ server.cpp RobustIO.cpp -o server
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <netinet/in.h>
