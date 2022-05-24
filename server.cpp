@@ -25,7 +25,7 @@ struct memory
 
 int main(int argc, char **argv)
 {
-	int sock, conn; // need socket for sercer and one for new connections
+	int sock, conn;
 	int i;
 	int rc;
 	struct sockaddr address;
@@ -35,19 +35,16 @@ int main(int argc, char **argv)
 	char buffer[512];
 	int len;
 	std::list<std::string> history = {};
-	// Clear the address hints structure
 	memset(&hints, 0, sizeof(hints));
 
 	hints.ai_socktype = SOCK_STREAM;			 // TCP
 	hints.ai_flags = AI_PASSIVE | AI_ADDRCONFIG; // IPv4/6, socket is for binding
-	// Get address info for local host (still the server)
 	if ((rc = getaddrinfo(NULL, "55555", &hints, &addr)))
 	{
 		printf("host name lookup failed: %s\n", gai_strerror(rc));
 		exit(1);
 	}
 
-	// Create a socket
 	sock = socket(addr->ai_family, addr->ai_socktype, addr->ai_protocol);
 	if (sock < 0)
 	{
@@ -55,13 +52,9 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	// Set the socket for address reuse, so it doesn't complain about
-	// other servers on the machine.
 	i = 1;
-	// set options for user (SO_REUSEADDR)
 	setsockopt(sock, SOL_SOCKET, SO_REUSEADDR, &i, sizeof(i));
 
-	// Bind the socket
 	rc = bind(sock, addr->ai_addr, addr->ai_addrlen);
 	if (rc < 0)
 	{
@@ -69,10 +62,8 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	// Clear up the address data
 	freeaddrinfo(addr);
 
-	// Listen for new connections, wait on up to five of them , listen to socket up to 5 connections
 	rc = listen(sock, 5);
 	if (rc < 0)
 	{
@@ -80,7 +71,7 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	fd_set master; // master file descriptor list
+	fd_set master; 
 	fd_set read_fds;
 
 	int client, length, fdmax;
