@@ -10,5 +10,5 @@ The purpose of this program was to create a terminal based chat server. After th
 =====================
 
 1. Download the source code [here](https://github.com/Jeremy-Mohammed/Chat-Server).
-2. Run the program in either WSL or any other C++ applicable terminal.
+2. Run the program in either WSL or any other C++ applicable terminal.__
 2a. You can run the program using "g++ -pthread client.cpp RobustIO.cpp -o client && g++ server.cpp RobustIO.cpp -o server" 
