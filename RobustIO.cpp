@@ -1,6 +1,5 @@
 #include "RobustIO.h"
 
-
 int RobustIO::readn(int fd, char* buffer, int count) {
     char* ptr = buffer;
 	int left = count;

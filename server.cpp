@@ -8,14 +8,12 @@
 #include "RobustIO.h"
 #include <pthread.h>
 #include <sys/types.h>
-#include <unistd.h>
 #include <sys/wait.h>
 #include <signal.h>
 #include <sys/select.h>
 #include <sstream>
 #include <stdio.h>
 #include <stdlib.h>
-#include <sys/select.h>
 #include <list>
 struct memory
 {
